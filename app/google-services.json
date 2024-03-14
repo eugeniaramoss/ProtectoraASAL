@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "935992673698",
+    "project_id": "protectoraasal",
+    "storage_bucket": "protectoraasal.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:935992673698:android:03e900d5564d889412defb",
+        "android_client_info": {
+          "package_name": "com.example.protectoraasal"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMVj_jRmig8nIrO2x1TXdEbYMb0sRqdLc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
