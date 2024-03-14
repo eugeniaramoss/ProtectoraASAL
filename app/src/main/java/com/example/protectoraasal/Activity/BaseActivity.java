@@ -15,7 +15,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class BaseActivity extends AppCompatActivity {
     FirebaseAuth fAuth;
     FirebaseDatabase database;
-    public String TAG = "uilover";
+    public String TAG = "protectoraASAL";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
