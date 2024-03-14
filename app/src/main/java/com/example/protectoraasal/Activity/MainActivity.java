@@ -1,6 +1,7 @@
 package com.example.protectoraasal.Activity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 
 import androidx.activity.EdgeToEdge;
@@ -8,7 +9,11 @@ import androidx.annotation.NonNull;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.protectoraasal.Adapter.BestProductsAdapter;
+import com.example.protectoraasal.Domain.Productos;
 import com.example.protectoraasal.Domain.Sexo;
 import com.example.protectoraasal.Domain.Tamanio;
 import com.example.protectoraasal.Domain.Tipo;
@@ -17,6 +22,7 @@ import com.example.protectoraasal.databinding.ActivityMainBinding;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -40,6 +46,35 @@ public class MainActivity extends BaseActivity {
         initTipo();
         initSexo();
         initTamanio();
+        initBestProduct();
+    }
+
+    private void initBestProduct() {
+        DatabaseReference myRef = database.getReference("Productos");
+        binding.progressBarBestProduct.setVisibility(View.VISIBLE);
+        ArrayList<Productos> list = new ArrayList<>();
+        Query query = myRef.orderByChild("BestProduct").equalTo(true);
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    for (DataSnapshot issue : snapshot.getChildren()) {
+                        list.add(issue.getValue(Productos.class));
+                    }
+                    if (list.size() > 0) {
+                        binding.bestProductView.setLayoutManager(new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false));
+                        RecyclerView.Adapter adapter = new BestProductsAdapter(list);
+                        binding.bestProductView.setAdapter(adapter);
+                    }
+                    binding.progressBarBestProduct.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     private void initTipo() { // en xml activity_main seria localizacion

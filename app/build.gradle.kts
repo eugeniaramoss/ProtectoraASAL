@@ -47,10 +47,10 @@ dependencies {
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
 
-    implementation("com.google.firebase:firebase-auth:22.3.1")
+    implementation(libs.firebase.auth)
+    implementation(libs.constraintlayout)
+    implementation(libs.appcompat)
     implementation("com.google.code.gson:gson:2.10.1")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("com.google.android.material:material:1.11.0")
-    implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.github.bumptech.glide:glide:4.16.0")
 }

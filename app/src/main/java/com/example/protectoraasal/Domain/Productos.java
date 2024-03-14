@@ -1,6 +1,7 @@
 package com.example.protectoraasal.Domain;
 
 public class Productos {
+    private Boolean BestProduct;
     private String descripcion;
     private int id;
     private String nombre;
@@ -14,6 +15,14 @@ public class Productos {
     @Override
     public String toString() {
         return nombre;
+    }
+
+    public Boolean getBestProduct() {
+        return BestProduct;
+    }
+
+    public void setBestProduct(Boolean bestProduct) {
+        BestProduct = bestProduct;
     }
 
     public String getDescripcion() {
