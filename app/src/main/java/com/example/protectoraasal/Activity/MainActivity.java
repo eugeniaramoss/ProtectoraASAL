@@ -1,7 +1,6 @@
 package com.example.protectoraasal.Activity;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 
@@ -13,7 +12,9 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.protectoraasal.Adapter.BestProductsAdapter;
+import com.example.protectoraasal.Adapter.AnimalesAdapter;
+import com.example.protectoraasal.Adapter.ProductosAdapter;
+import com.example.protectoraasal.Domain.Animales;
 import com.example.protectoraasal.Domain.Productos;
 import com.example.protectoraasal.Domain.Sexo;
 import com.example.protectoraasal.Domain.Tamanio;
@@ -47,12 +48,41 @@ public class MainActivity extends BaseActivity {
         initTipo();
         initSexo();
         initTamanio();
-        initBestProduct();
+        initProductos();
+        initAnimales();
     }
 
-    private void initBestProduct() {
+    private void initAnimales() {
+        DatabaseReference myRef = database.getReference("Animales");
+        binding.progressBarAnimales.setVisibility(View.VISIBLE);
+        ArrayList<Animales> list = new ArrayList<>();
+        Query query = myRef.orderByChild("pagPpal").equalTo(true);
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    for (DataSnapshot issue : snapshot.getChildren()) {
+                        list.add(issue.getValue(Animales.class));
+                    }
+                    if (list.size() > 0) {
+                        binding.animalesView.setLayoutManager(new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false));
+                        RecyclerView.Adapter adapter = new AnimalesAdapter(list);
+                        binding.animalesView.setAdapter(adapter);
+                    }
+                    binding.progressBarAnimales.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    private void initProductos() {
         DatabaseReference myRef = database.getReference("Productos");
-        binding.progressBarBestProduct.setVisibility(View.VISIBLE);
+        binding.progressBarProductos.setVisibility(View.VISIBLE);
         ArrayList<Productos> list = new ArrayList<>();
         Query query = myRef.orderByChild("BestProduct").equalTo(true);
         query.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -64,10 +94,10 @@ public class MainActivity extends BaseActivity {
                     }
                     if (list.size() > 0) {
                         binding.bestProductView.setLayoutManager(new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false));
-                        RecyclerView.Adapter adapter = new BestProductsAdapter(list);
+                        RecyclerView.Adapter adapter = new ProductosAdapter(list);
                         binding.bestProductView.setAdapter(adapter);
                     }
-                    binding.progressBarBestProduct.setVisibility(View.GONE);
+                    binding.progressBarProductos.setVisibility(View.GONE);
                 }
             }
 

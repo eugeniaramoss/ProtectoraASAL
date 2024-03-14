@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="230dp"
-    android:layout_height="225dp"
+    android:layout_height="325dp"
     android:layout_margin="8dp"
     app:cardCornerRadius="15dp"
     app:cardElevation="3dp">
@@ -15,20 +15,20 @@
         <ImageView
             android:id="@+id/pic"
             android:layout_width="0dp"
-            android:layout_height="130dp"
+            android:layout_height="215dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="105dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/pic"
-            app:layout_constraintVertical_bias="0.0">
+            app:layout_constraintVertical_bias="1.0">
 
             <TextView
                 android:id="@+id/titleTxt"
@@ -40,7 +40,7 @@
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toStartOf="@+id/priceTxt"
+                app:layout_constraintEnd_toStartOf="@+id/precioTxt"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -82,7 +82,7 @@
                 app:tint="@color/orange" />
 
             <TextView
-                android:id="@+id/priceTxt"
+                android:id="@+id/precioTxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"

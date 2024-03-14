@@ -50,7 +50,7 @@
                     android:id="@+id/logoutBtn"
                     android:layout_width="27dp"
                     android:layout_height="27dp"
-                    android:layout_marginTop="11dp"
+                    android:layout_marginTop="16dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -58,6 +58,15 @@
                     app:srcCompat="@drawable/logout" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <ImageView
+                android:id="@+id/logo"
+                android:layout_width="326dp"
+                android:layout_height="111dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="8dp"
+                app:srcCompat="@drawable/logo2" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -89,6 +98,8 @@
                         android:layout_height="match_parent"
                         android:layout_marginStart="4dp"
                         android:layout_weight="1"
+                        android:layout_gravity="center"
+
                         android:background="@null" />
                 </LinearLayout>
 
@@ -116,6 +127,8 @@
                         android:layout_height="match_parent"
                         android:layout_marginStart="4dp"
                         android:layout_weight="1"
+                        android:layout_gravity="center"
+                        android:autofillHints="Sexo"
                         android:background="@null" />
                 </LinearLayout>
 
@@ -133,7 +146,7 @@
                         android:layout_gravity="center"
                         android:layout_marginStart="8dp"
                         android:padding="4dp"
-                        android:src="@drawable/simbolo_tamaño" />
+                        android:src="@drawable/simbolo_tamano" />
 
                     <Spinner
                         android:id="@+id/priceSp"
@@ -141,6 +154,8 @@
                         android:layout_height="match_parent"
                         android:layout_marginStart="4dp"
                         android:layout_weight="1"
+                        android:layout_gravity="center"
+                        android:autofillHints="Tamaño"
                         android:background="@null" />
                 </LinearLayout>
             </LinearLayout>
@@ -149,6 +164,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
+                android:layout_marginTop="28dp"
                 tools:layout_editor_absoluteX="16dp"
                 tools:layout_editor_absoluteY="-30dp">
 
@@ -157,7 +173,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_weight="1"
-                    android:text="Algunos de nuestros perritos!"
+                    android:text="Nuestros amigos"
                     android:textColor="@color/dark_grey"
                     android:textSize="22dp"
                     android:textStyle="bold" />
@@ -167,6 +183,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="VER TODOS"
+                    android:layout_marginEnd="16dp"
                     android:textColor="@color/orange"
                     tools:layout_editor_absoluteX="321dp"
                     tools:layout_editor_absoluteY="-21dp" />
@@ -174,20 +191,21 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="225dp">
+                android:layout_height="300dp"
+                android:minHeight="300dp">
 
                 <ProgressBar
-                    android:id="@+id/progressBarCategory"
+                    android:id="@+id/progressBarAnimales"
                     style="?android:attr/progressBarStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="@+id/categoryView"
-                    app:layout_constraintEnd_toEndOf="@+id/categoryView"
+                    app:layout_constraintBottom_toBottomOf="@+id/animalesView"
+                    app:layout_constraintEnd_toEndOf="@+id/animalesView"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/categoryView" />
+                    app:layout_constraintTop_toTopOf="@+id/animalesView" />
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/categoryView"
+                    android:id="@+id/animalesView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -195,6 +213,15 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <ImageView
+                android:id="@+id/imageView7"
+                android:layout_width="match_parent"
+                android:layout_height="124dp"
+                android:layout_marginTop="34dp"
+                android:layout_marginBottom="16dp"
+                android:scaleType="fitXY"
+                app:srcCompat="@drawable/banner" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -257,6 +284,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
+                android:layout_marginTop="16dp"
                 tools:layout_editor_absoluteX="16dp"
                 tools:layout_editor_absoluteY="-30dp">
 
@@ -264,8 +292,10 @@
                     android:id="@+id/textView9"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
                     android:layout_weight="1"
-                    android:text="Productos destacados!"
+                    android:gravity="center_vertical"
+                    android:text="Productos destacados"
                     android:textColor="@color/dark_grey"
                     android:textSize="22dp"
                     android:textStyle="bold"
@@ -277,6 +307,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="VER TODOS"
+                    android:layout_marginEnd="16dp"
                     android:textColor="@color/orange"
                     tools:layout_editor_absoluteX="321dp"
                     tools:layout_editor_absoluteY="-21dp" />
@@ -284,13 +315,15 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
-                android:minHeight="250dp"
+                android:layout_height="340dp"
+                android:minHeight="340dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="30dp"
                 tools:layout_editor_absoluteX="0dp"
                 tools:layout_editor_absoluteY="0dp">
 
                 <ProgressBar
-                    android:id="@+id/progressBarBestProduct"
+                    android:id="@+id/progressBarProductos"
                     style="?android:attr/progressBarStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

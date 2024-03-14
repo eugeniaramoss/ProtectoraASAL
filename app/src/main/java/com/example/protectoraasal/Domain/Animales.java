@@ -10,7 +10,7 @@ public class Animales {
     private String rutaImagen;
     private String rutaImagen2;
     private String rutaImagen3;
-    private int sexo_id;
+    private String sexo;
     private int tamanio_id;
     private int tipo_id;
 
@@ -94,12 +94,12 @@ public class Animales {
         this.rutaImagen3 = rutaImagen3;
     }
 
-    public int getSexo_id() {
-        return sexo_id;
+    public String getSexo() {
+        return sexo;
     }
 
-    public void setSexo_id(int sexo_id) {
-        this.sexo_id = sexo_id;
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
     }
 
     public int getTamanio_id() {
