@@ -38,7 +38,7 @@ public class BestProductsAdapter extends RecyclerView.Adapter<BestProductsAdapte
     public void onBindViewHolder(@NonNull BestProductsAdapter.viewholder holder, int position) {
         Productos currentProducto = items.get(position);
         holder.titleTxt.setText(currentProducto.getNombre());
-        holder.priceTxt.setText(String.valueOf(currentProducto.getPrecio()));
+        holder.priceTxt.setText(String.valueOf(currentProducto.getPrecio()) + "€");
         holder.stockTxt.setText(String.valueOf(currentProducto.getStock()));
 
         Glide.with(context)
