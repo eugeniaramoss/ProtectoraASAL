@@ -165,6 +165,7 @@
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
                 android:layout_marginTop="28dp"
+                android:layout_marginBottom="10dp"
                 tools:layout_editor_absoluteX="16dp"
                 tools:layout_editor_absoluteY="-30dp">
 
@@ -173,7 +174,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_weight="1"
-                    android:text="Nuestros amigos"
+                    android:text="Nuestros peludos"
                     android:textColor="@color/dark_grey"
                     android:textSize="22dp"
                     android:textStyle="bold" />
@@ -249,7 +250,7 @@
                     android:padding="12dp">
 
                     <EditText
-                        android:id="@+id/editTextText"
+                        android:id="@+id/searchEdt"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
