@@ -16,8 +16,6 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.protectoraasal.R;
 import com.example.protectoraasal.databinding.ActivityLoginBinding;
-import com.google.android.gms.auth.api.identity.BeginSignInRequest;
-import com.google.android.gms.auth.api.identity.SignInCredential;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
