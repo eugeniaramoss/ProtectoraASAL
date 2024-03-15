@@ -1,6 +1,8 @@
 package com.example.protectoraasal.Domain;
 
-public class Productos {
+import java.io.Serializable;
+
+public class Productos implements Serializable {
     private Boolean BestProduct;
     private String descripcion;
     private int id;
@@ -73,6 +75,6 @@ public class Productos {
         this.stock = stock;
     }
 
-    }
+}
 
 

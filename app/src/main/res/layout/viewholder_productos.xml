@@ -58,7 +58,7 @@
                 app:layout_constraintEnd_toEndOf="parent" />
 
             <TextView
-                android:id="@+id/stockTxt"
+                android:id="@+id/sexoTxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
@@ -73,9 +73,9 @@
                 android:layout_width="22dp"
                 android:layout_height="20dp"
                 android:layout_marginStart="8dp"
-                app:layout_constraintBottom_toBottomOf="@+id/stockTxt"
-                app:layout_constraintStart_toEndOf="@+id/stockTxt"
-                app:layout_constraintTop_toTopOf="@+id/stockTxt"
+                app:layout_constraintBottom_toBottomOf="@+id/sexoTxt"
+                app:layout_constraintStart_toEndOf="@+id/sexoTxt"
+                app:layout_constraintTop_toTopOf="@+id/sexoTxt"
                 app:layout_constraintVertical_bias="0.0"
                 app:layout_goneMarginStart="8dp"
                 app:srcCompat="@drawable/time"

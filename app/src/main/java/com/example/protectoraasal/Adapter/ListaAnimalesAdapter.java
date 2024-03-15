@@ -15,35 +15,31 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.example.protectoraasal.Activity.DetallesAnimalesActivity;
-import com.example.protectoraasal.Activity.DetallesProductosActivity;
 import com.example.protectoraasal.Domain.Animales;
-import com.example.protectoraasal.Domain.Productos;
 import com.example.protectoraasal.R;
 
 import java.util.ArrayList;
 
-public class AnimalesAdapter extends RecyclerView.Adapter<AnimalesAdapter.viewholder>{
+public class ListaAnimalesAdapter extends RecyclerView.Adapter<ListaAnimalesAdapter.viewholder> {
     ArrayList<Animales> items;
     Context context;
 
-    public AnimalesAdapter(ArrayList<Animales> items) {
+    public ListaAnimalesAdapter(ArrayList<Animales> items) {
         this.items = items;
     }
-
     @NonNull
     @Override
-    public AnimalesAdapter.viewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        context = parent.getContext();
-        View inflate = LayoutInflater.from(parent.getContext()).inflate(R.layout.viewholder_animales, parent, false);
+    public ListaAnimalesAdapter.viewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        context= parent.getContext();
+        View inflate = LayoutInflater.from(context).inflate(R.layout.viewholder_listaanimales, parent, false);
         return new viewholder(inflate);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull AnimalesAdapter.viewholder holder, int position) {
-        Animales currentAnimal = items.get(position);
-        holder.titleTxt.setText(currentAnimal.getNombre());
-        holder.edadTxt.setText(String.valueOf(currentAnimal.getEdad()) + " año/s");
-        holder.sexoTxt.setText(currentAnimal.getSexo());
+    public void onBindViewHolder(@NonNull ListaAnimalesAdapter.viewholder holder, int position) {
+        holder.titleTxt.setText(items.get(position).getNombre());
+        holder.sexoTxt.setText(items.get(position).getSexo());
+        holder.edadTxt.setText(items.get(position).getEdad() + " año/s");
 
         Glide.with(context)
                 .load(items.get(position).getRutaImagen())
@@ -52,7 +48,7 @@ public class AnimalesAdapter extends RecyclerView.Adapter<AnimalesAdapter.viewho
 
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, DetallesAnimalesActivity.class);
-            intent.putExtra("object", currentAnimal);
+            intent.putExtra("object", items.get(position));
             context.startActivity(intent);
         });
     }
@@ -62,16 +58,19 @@ public class AnimalesAdapter extends RecyclerView.Adapter<AnimalesAdapter.viewho
         return items.size();
     }
 
-    public class viewholder extends RecyclerView.ViewHolder {
-        TextView titleTxt, sexoTxt, edadTxt;
+    public class viewholder extends RecyclerView.ViewHolder{
+        TextView titleTxt, edadTxt, rateTxt, sexoTxt;
         ImageView pic;
-
         public viewholder(@NonNull View itemView) {
             super(itemView);
-            titleTxt = itemView.findViewById(R.id.titleTxt);
-            sexoTxt = itemView.findViewById(R.id.sexoTxt);
-            edadTxt = itemView.findViewById(R.id.precioTxt);
-            pic = itemView.findViewById(R.id.pic);
+
+            titleTxt=itemView.findViewById(R.id.titleTxt);
+            edadTxt=itemView.findViewById(R.id.precioTxt);
+            rateTxt=itemView.findViewById(R.id.rateTxt);
+            sexoTxt=itemView.findViewById(R.id.sexoTxt);
+            pic=itemView.findViewById(R.id.pic);
+
+
         }
     }
 }

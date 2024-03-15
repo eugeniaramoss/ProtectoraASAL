@@ -13,7 +13,13 @@
         android:theme="@style/Theme.ProtectoraASAL"
         tools:targetApi="31">
         <activity
-            android:name=".Activity.DetallesActivity"
+            android:name=".Activity.ListaAnimalesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.DetallesAnimalesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.DetallesProductosActivity"
             android:exported="false" />
         <activity
             android:name=".Activity.ListaProductosActivity"

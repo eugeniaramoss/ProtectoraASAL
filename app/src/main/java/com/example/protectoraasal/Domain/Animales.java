@@ -1,6 +1,8 @@
 package com.example.protectoraasal.Domain;
 
-public class Animales {
+import java.io.Serializable;
+
+public class Animales implements Serializable {
     private String descripcion;
     private int edad;
     private int estado_id;

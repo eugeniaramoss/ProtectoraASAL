@@ -1,6 +1,7 @@
 package com.example.protectoraasal.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.example.protectoraasal.Activity.DetallesProductosActivity;
 import com.example.protectoraasal.Domain.Productos;
 import com.example.protectoraasal.R;
 
@@ -28,14 +30,14 @@ public class ProductosAdapter extends RecyclerView.Adapter<ProductosAdapter.View
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ProductosAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         context = parent.getContext();
-        View view = LayoutInflater.from(context).inflate(R.layout.viewholder_productos, parent, false);
-        return new ViewHolder(view);
+        View inflate = LayoutInflater.from(parent.getContext()).inflate(R.layout.viewholder_productos, parent, false);
+        return new ViewHolder(inflate);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ProductosAdapter.ViewHolder holder, int position) {
         Productos currentProducto = items.get(position);
         holder.titleTxt.setText(currentProducto.getNombre());
         holder.precioTxt.setText(String.valueOf(currentProducto.getPrecio()) + "€");
@@ -45,6 +47,12 @@ public class ProductosAdapter extends RecyclerView.Adapter<ProductosAdapter.View
                 .load(currentProducto.getRutaImagen())
                 .transform(new CenterCrop(), new RoundedCorners(30))
                 .into(holder.pic);
+
+        holder.itemView.setOnClickListener(v -> {
+            Intent intent = new Intent(context, DetallesProductosActivity.class);
+            intent.putExtra("object", currentProducto);
+            context.startActivity(intent);
+        });
     }
 
     @Override
@@ -59,7 +67,7 @@ public class ProductosAdapter extends RecyclerView.Adapter<ProductosAdapter.View
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             titleTxt = itemView.findViewById(R.id.titleTxt);
-            stockTxt = itemView.findViewById(R.id.stockTxt);
+            stockTxt = itemView.findViewById(R.id.sexoTxt);
             precioTxt = itemView.findViewById(R.id.precioTxt);
             pic = itemView.findViewById(R.id.pic);
         }

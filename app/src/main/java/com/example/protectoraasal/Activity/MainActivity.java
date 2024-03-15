@@ -52,10 +52,11 @@ public class MainActivity extends BaseActivity {
         initTamanio();
         initProductos();
         initAnimales();
-        setVariable();
+        setVariableProductos();
+        setVariableAnimales();
     }
 
-    private void setVariable() {
+    private void setVariableProductos() {
         binding.logoutBtn.setOnClickListener(v -> {
             FirebaseAuth.getInstance().
             signOut();
@@ -65,6 +66,23 @@ public class MainActivity extends BaseActivity {
             String text = binding.searchEdt.getText().toString();
             if (!text.isEmpty()){
                 Intent intent = new Intent(MainActivity.this, ListaProductosActivity.class);
+                intent.putExtra("text", text);
+                intent.putExtra("isSearch", true);
+                startActivity(intent);
+            }
+        });
+    }
+
+    private void setVariableAnimales() {
+        binding.logoutBtn.setOnClickListener(v -> {
+            FirebaseAuth.getInstance().
+                    signOut();
+            startActivity(new Intent(MainActivity.this, LoginActivity .class));
+        });
+        binding.searchBtn.setOnClickListener(v -> {
+            String text = binding.searchEdt.getText().toString();
+            if (!text.isEmpty()){
+                Intent intent = new Intent(MainActivity.this, ListaAnimalesActivity.class);
                 intent.putExtra("text", text);
                 intent.putExtra("isSearch", true);
                 startActivity(intent);
