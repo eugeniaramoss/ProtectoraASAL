@@ -70,8 +70,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="title"
                     android:paddingEnd="30dp"
+                    android:text="title"
                     android:textColor="@color/dark_grey"
                     android:textSize="20dp"
                     android:textStyle="bold" />
@@ -218,7 +218,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <Button
+            <!--<Button
                 android:id="@+id/updateBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -228,7 +228,7 @@
                 android:id="@+id/deleteBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Eliminar" />
+                android:text="Eliminar" />-->
 
         </LinearLayout>
     </ScrollView>

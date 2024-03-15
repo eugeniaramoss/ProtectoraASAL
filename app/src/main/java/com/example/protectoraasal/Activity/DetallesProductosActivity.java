@@ -20,20 +20,20 @@ public class DetallesProductosActivity extends AppCompatActivity {
     ActivityDetallesProductosBinding binding;
     private Productos object;
     private int num = 1;
-    private DatabaseReference databaseReference;
+    // private DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityDetallesProductosBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("Productos");
+        //databaseReference = FirebaseDatabase.getInstance().getReference().child("Productos");
 
         getIntentExtra();
         setVariableProductos();
 
-        actualizarProducto(1, "Nuevo nombre", "Nueva descripción", 100, "nueva_ruta_imagen.jpg", 10);
-        eliminarProducto(1);
+        // actualizarProducto(1, "Nuevo nombre", "Nueva descripción", 100, "nueva_ruta_imagen.jpg", 10);
+        // eliminarProducto(1);
     }
 
     private void setVariableProductos() {
@@ -57,7 +57,7 @@ public class DetallesProductosActivity extends AppCompatActivity {
         binding.backBtn.setOnClickListener(v -> finish());
     }
 
-    private void actualizarProducto(int id, String nuevoNombre, String nuevaDescripcion, int nuevoPrecio, String nuevaRutaImagen, int nuevoStock) {
+    /*private void actualizarProducto(int id, String nuevoNombre, String nuevaDescripcion, int nuevoPrecio, String nuevaRutaImagen, int nuevoStock) {
         Usuarios user = null;
         databaseReference.child(String.valueOf(id)).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -100,6 +100,6 @@ public class DetallesProductosActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
-    }
+    }*/
 
 }
