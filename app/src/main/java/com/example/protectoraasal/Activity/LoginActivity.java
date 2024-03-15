@@ -7,7 +7,9 @@ import android.util.Log;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -17,11 +19,16 @@ import com.example.protectoraasal.databinding.ActivityLoginBinding;
 import com.google.android.gms.auth.api.identity.BeginSignInRequest;
 import com.google.android.gms.auth.api.identity.SignInCredential;
 import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.GoogleAuthProvider;
 
 public class LoginActivity extends BaseActivity {
     ActivityLoginBinding binding;
-    private static final int REQ_ONE_TAP = 2;  // Can be any integer unique to the Activity.
     private boolean showOneTapUI = true;
     private FirebaseAuth mAuth;
 
@@ -29,6 +36,8 @@ public class LoginActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
+
+        mAuth = FirebaseAuth.getInstance();
 
         EdgeToEdge.enable(this);
         setContentView(binding.getRoot());
@@ -40,6 +49,7 @@ public class LoginActivity extends BaseActivity {
 
         setVariable();
     }
+
 
     private void setVariable() {
         binding.loginBtn.setOnClickListener(v -> {
@@ -70,19 +80,9 @@ public class LoginActivity extends BaseActivity {
         });
 
         binding.google.setOnClickListener(v -> {
-            /*String googleUrl = "https://www.google.com";
+            String googleUrl = "https://www.google.com";
             Intent googleIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(googleUrl));
-            startActivity(googleIntent);*/
-            BeginSignInRequest signInRequest = BeginSignInRequest.builder()
-                    .setGoogleIdTokenRequestOptions(BeginSignInRequest.GoogleIdTokenRequestOptions.builder()
-                            .setSupported(true)
-                            // Your server's client ID, not your Android client ID.
-                            .setServerClientId(getString(R.string.default_web_client_id))
-                            // Only show accounts previously used to sign in.
-                            .setFilterByAuthorizedAccounts(true)
-                            .build())
-                    .build();
-
+            startActivity(googleIntent);
         });
 
         // Twitter
@@ -91,27 +91,5 @@ public class LoginActivity extends BaseActivity {
             Intent twitterIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(twitterUrl));
             startActivity(twitterIntent);
         });
-
-
-        @Override
-        protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-            super.onActivityResult(requestCode, resultCode, data);
-
-            switch (requestCode) {
-                case REQ_ONE_TAP:
-                    try {
-                        SignInCredential credential = oneTapClient.getSignInCredentialFromIntent(data);
-                        String idToken = credential.getGoogleIdToken();
-                        if (idToken !=  null) {
-                            // Got an ID token from Google. Use it to authenticate
-                            // with Firebase.
-                            Log.d(TAG, "Got ID token.");
-                        }
-                    } catch (ApiException e) {
-                        // ...
-                    }
-                    break;
-            }
-        }
     }
 }
