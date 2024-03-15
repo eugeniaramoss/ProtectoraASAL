@@ -34,8 +34,13 @@ public class RegisterActivity extends BaseActivity {
 
     private void setVariable() {
         binding.registerBtn.setOnClickListener(v -> {
-            String email = binding.userEdt.getText().toString();
-            String password = binding.passEdt.getText().toString();
+            String email = binding.userEdt.getText().toString().trim();
+            String password = binding.passEdt.getText().toString().trim();
+
+            if (email.isEmpty() || password.isEmpty()) {
+                Toast.makeText(RegisterActivity.this, "Por favor, complete todos los campos.", Toast.LENGTH_SHORT).show();
+                return;
+            }
 
             if (password.length() < 8) {
                 Toast.makeText(RegisterActivity.this, "La contraseña debe tener al menos 8 caracteres.", Toast.LENGTH_SHORT).show();
@@ -45,12 +50,17 @@ public class RegisterActivity extends BaseActivity {
             fAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(RegisterActivity.this, task -> {
                 if (task.isSuccessful()) {
                     Log.i(TAG, "onComplete: ");
-                    startActivity(new Intent(RegisterActivity.this, MainActivity.class));
+                    startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+                    Toast.makeText(RegisterActivity.this, "Cuenta creada exitosamente. Por favor, inicia sesión.", Toast.LENGTH_SHORT).show();
                 } else {
                     Log.i(TAG, "failure: ", task.getException());
                     Toast.makeText(RegisterActivity.this, "Autenticación fallida", Toast.LENGTH_SHORT).show();
                 }
             });
+        });
+
+        binding.sesionBtn.setOnClickListener(v -> {
+            startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
         });
     }
 }

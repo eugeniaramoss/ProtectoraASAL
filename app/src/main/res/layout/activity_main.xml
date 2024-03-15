@@ -36,7 +36,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/textView4"
+                    android:id="@+id/usuarioTxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Eugenia Ramos"
@@ -180,7 +180,7 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/textView11"
+                    android:id="@+id/vertodosAnimalesBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="VER TODOS"
@@ -304,7 +304,7 @@
                     tools:layout_editor_absoluteY="-30dp" />
 
                 <TextView
-                    android:id="@+id/textView10"
+                    android:id="@+id/vertodosProductosBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="VER TODOS"

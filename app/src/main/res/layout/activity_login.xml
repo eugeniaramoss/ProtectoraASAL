@@ -87,7 +87,7 @@
                 android:layout_marginEnd="100dp"
                 android:layout_marginBottom="30dp"
                 android:background="@drawable/orange_button_background"
-                android:text="Iniciar sesión"
+                android:text="@string/login_button"
                 android:textColor="@color/white"
                 android:textSize="16dp"
                 android:textStyle="bold" />
@@ -168,7 +168,7 @@
                     android:textSize="16sp" />
 
                 <TextView
-                    android:id="@+id/textView7"
+                    android:id="@+id/registroBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Regístrate"

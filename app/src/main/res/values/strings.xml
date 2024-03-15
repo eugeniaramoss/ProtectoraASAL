@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">ProtectoraASAL</string>
+    <string name="login_title">Iniciar sesión</string>
+    <string name="register_title">Registrarse</string>
+    <string name="email_hint">Correo electrónico</string>
+    <string name="password_hint">Contraseña</string>
+    <string name="login_button">Iniciar sesión</string>
+    <string name="register_button">Registrarse</string>
+    <string name="forgot_password">¿Olvidaste tu contraseña?</string>
+    <string name="welcome_message">¡Bienvenido!</string>
+    <string name="error_empty_fields">Por favor, complete todos los campos.</string>
+    <string name="error_invalid_credentials">Credenciales incorrectas. Por favor, verifique sus datos.</string>
+    <string name="error_login_failed">Error al iniciar sesión. Por favor, inténtelo de nuevo más tarde.</string>
+    <string name="error_register_failed">Error al registrarse. Por favor, inténtelo de nuevo más tarde.</string>
+    <string name="error_email_already_exists">Este correo electrónico ya está registrado. Por favor, inicie sesión o utilice otro correo electrónico.</string>
+    <string name="success_register">¡Registro exitoso! Por favor, inicie sesión para continuar.</string>
+    <string name="success_login">¡Inicio de sesión exitoso! Bienvenido de nuevo.</string>
+    <string name="default_web_client_id">protectoraasal-417309\n</string>
 </resources>

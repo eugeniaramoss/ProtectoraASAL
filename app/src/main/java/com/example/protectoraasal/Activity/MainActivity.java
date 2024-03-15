@@ -23,6 +23,7 @@ import com.example.protectoraasal.Domain.Tipo;
 import com.example.protectoraasal.R;
 import com.example.protectoraasal.databinding.ActivityMainBinding;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -47,6 +48,7 @@ public class MainActivity extends BaseActivity {
             return insets;
         });
 
+        setUserText();
         initTipo();
         initSexo();
         initTamanio();
@@ -54,6 +56,16 @@ public class MainActivity extends BaseActivity {
         initAnimales();
         setVariableProductos();
         setVariableAnimales();
+
+
+        binding.vertodosAnimalesBtn.setOnClickListener(v -> {
+            startActivity(new Intent(MainActivity.this, ListaAnimalesActivity.class));
+        });
+
+
+        binding.vertodosProductosBtn.setOnClickListener(v -> {
+            startActivity(new Intent(MainActivity.this, ListaProductosActivity.class));
+        });
     }
 
     private void setVariableProductos() {
@@ -214,4 +226,16 @@ public class MainActivity extends BaseActivity {
             }
         });
     }
+
+
+    private void setUserText() {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            String userEmail = user.getEmail();
+            binding.usuarioTxt.setText(userEmail);
+        }
+    }
+
+
+
 }
